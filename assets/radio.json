@@ -1,0 +1,17 @@
+{
+    "radios": [
+        {
+            "id": 1,
+            "name": "Cellar",
+            "tagline": "Cellar FM",
+            "color": "0xffa11431",
+            "desc": "The chills you get when you listen to music, is mostly caused by the brain releasing dopamine while anticipating the peak moment of a song.",
+            "url": "https://cellarfm1.out.airtime.pro/cellarfm1_a",
+            "icon": "https://mytuner.global.ssl.fastly.net/media/tvos_radios/m8afyszryaqt.png",
+            "image": "https://1.bp.blogspot.com/-YKQdgaPWFjE/YH28sBucbGI/AAAAAAAAAIo/aVr-E_3wcUsxbzw0ZHQH1UZiKT2D3z6yACLcBGAsYHQ/s0/Cellar.jpg",
+            "category": "FM",
+            "disliked": false,
+            "order": 1
+        }
+    ]
+}
