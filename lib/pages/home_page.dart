@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> initRadioService() async {
     try {
       await _flutterRadioPlayer.init("Cellar FM", "Live",
-          "https://mytuner.global.ssl.fastly.net/media/tvos_radios/m8afyszryaqt.png", "false");
+          "https://1.bp.blogspot.com/-YKQdgaPWFjE/YH28sBucbGI/AAAAAAAAAIo/aVr-E_3wcUsxbzw0ZHQH1UZiKT2D3z6yACLcBGAsYHQ/s0/Cellar.jpg", "false");
     } on PlatformException {
       print("Exception occurred while trying to register the services.");
     }
