@@ -1,7 +1,7 @@
 import 'package:Cellar2/model/radio.dart';
 import 'package:Cellar2/pages/webview.dart';
 import 'package:Cellar2/utils/ai_util.dart';
-import 'package:audioplayers/audioplayers.dart';
+// //import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +11,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_radio_player/flutter_radio_player.dart';
 
 class HomePage extends StatefulWidget {
-  var playerState = FlutterRadioPlayer.flutter_radio_paused;
+  final playerState = FlutterRadioPlayer.flutter_radio_paused;
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -28,9 +29,8 @@ class _HomePageState extends State<HomePage> {
   List<MyRadio> radios;
   MyRadio _selectedRadio;
   Color _selectedColor;
-  bool _isPlaying = false;
 
-  final AudioPlayer _audioPlayer = AudioPlayer();
+  // final AudioPlayer _audioPlayer = AudioPlayer();
 
   //_sendmail()
   @override
@@ -40,14 +40,14 @@ class _HomePageState extends State<HomePage> {
     initRadioService();
     fetchRadios();
 
-    _audioPlayer.onPlayerStateChanged.listen((event) {
-      if (event == AudioPlayerState.PLAYING) {
-        _isPlaying = true;
-      } else {
-        _isPlaying = false;
-      }
-      setState(() {});
-    });
+    // _audioPlayer.onPlayerStateChanged.listen((event) {
+    //   if (event == AudioPlayerState.PLAYING) {
+    //     _isPlaying = true;
+    //   } else {
+    //     _isPlaying = false;
+    //   }
+    //   setState(() {});
+    // });
   }
 
   fetchRadios() async {
@@ -59,7 +59,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {});
   }
 
-  int _currentIndex = 0;
   final List<Widget> _children = [
     new HomePage(),
   ];
@@ -69,7 +68,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> initRadioService() async {
     try {
       await _flutterRadioPlayer.init("Cellar FM", "Live",
-          "https://1.bp.blogspot.com/-YKQdgaPWFjE/YH28sBucbGI/AAAAAAAAAIo/aVr-E_3wcUsxbzw0ZHQH1UZiKT2D3z6yACLcBGAsYHQ/s0/Cellar.jpg", "false");
+          "https://cellarfm1.out.airtime.pro/cellarfm1_a", "false");
     } on PlatformException {
       print("Exception occurred while trying to register the services.");
     }
@@ -81,12 +80,12 @@ class _HomePageState extends State<HomePage> {
   ///
   ///
 
-  _playMusic(String url) {
-    _audioPlayer.play(url);
-    _selectedRadio = radios.firstWhere((element) => element.url == url);
-    print(_selectedRadio.name);
-    setState(() {});
-  }
+  // _playMusic(String url) {
+  //   //_audioPlayer.play(url);
+  //   _selectedRadio = radios.firstWhere((element) => element.url == url);
+  //   print(_selectedRadio.name);
+  //   setState(() {});
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +104,8 @@ class _HomePageState extends State<HomePage> {
                       children: radios
                           .map((e) => ListTile(
                                 leading: CircleAvatar(
-                                  backgroundImage: NetworkImage("https://1.bp.blogspot.com/-YKQdgaPWFjE/YH28sBucbGI/AAAAAAAAAIo/aVr-E_3wcUsxbzw0ZHQH1UZiKT2D3z6yACLcBGAsYHQ/s0/Cellar.jpg"),
+                                  backgroundImage: NetworkImage(
+                                      "https://1.bp.blogspot.com/-YKQdgaPWFjE/YH28sBucbGI/AAAAAAAAAIo/aVr-E_3wcUsxbzw0ZHQH1UZiKT2D3z6yACLcBGAsYHQ/s0/Cellar.jpg"),
                                 ),
                                 title: "${e.name} FM".text.white.make(),
                                 subtitle: e.tagline.text.white.make(),
@@ -155,12 +155,12 @@ class _HomePageState extends State<HomePage> {
             30.heightBox,
             radios != null
                 ? VxSwiper.builder(
-                   itemCount: radios.length,
-                  aspectRatio: context.mdWindowSize == MobileWindowSize.xsmall
-                      ? 1.0
-                      : context.mdWindowSize == MobileWindowSize.medium
-                          ? 2.0
-                          : 3.0,
+                    itemCount: radios.length,
+                    aspectRatio: context.mdWindowSize == MobileWindowSize.xsmall
+                        ? 1.0
+                        : context.mdWindowSize == MobileWindowSize.medium
+                            ? 2.0
+                            : 3.0,
                     enlargeCenterPage: true,
                     onPageChanged: (index) {
                       _selectedRadio = radios[index];
@@ -223,9 +223,8 @@ class _HomePageState extends State<HomePage> {
                           .border(color: Colors.black, width: 5.0)
                           .withRounded(value: 60.0)
                           .make()
-                          .onInkDoubleTap(() {
-                        _playMusic(rad.url);
-                      }).p16();
+                          .onInkDoubleTap(() {})
+                          .p16();
                     },
                   ).centered()
                 : Center(
