@@ -11,7 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_radio_player/flutter_radio_player.dart';
 
 class HomePage extends StatefulWidget {
-  final playerState = FlutterRadioPlayer.flutter_radio_paused;
+  var playerState = FlutterRadioPlayer.flutter_radio_paused;
 
   @override
   _HomePageState createState() => _HomePageState();
